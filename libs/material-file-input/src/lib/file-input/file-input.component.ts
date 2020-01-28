@@ -1,6 +1,18 @@
-import { Component, OnInit, Input, ElementRef, OnDestroy, HostBinding, Renderer2, HostListener, Optional, Self, DoCheck } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ElementRef,
+  OnDestroy,
+  HostBinding,
+  Renderer2,
+  HostListener,
+  Optional,
+  Self,
+  DoCheck
+} from '@angular/core';
 import { ControlValueAccessor, NgControl, NgForm, FormGroupDirective } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material';
+import { ErrorStateMatcher } from '@angular/material/core';
 import { MatFormFieldControl } from '@angular/material/form-field';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
@@ -15,7 +27,8 @@ import { FileInputMixinBase } from './file-input-mixin';
   styleUrls: ['./file-input.component.css'],
   providers: [{ provide: MatFormFieldControl, useExisting: FileInputComponent }]
 })
-export class FileInputComponent extends FileInputMixinBase implements MatFormFieldControl<FileInput>, ControlValueAccessor, OnInit, OnDestroy, DoCheck {
+export class FileInputComponent extends FileInputMixinBase
+  implements MatFormFieldControl<FileInput>, ControlValueAccessor, OnInit, OnDestroy, DoCheck {
   static nextId = 0;
 
   focused = false;
@@ -112,9 +125,9 @@ export class FileInputComponent extends FileInputMixinBase implements MatFormFie
     @Self()
     public ngControl: NgControl,
     @Optional() public _parentForm: NgForm,
-    @Optional() public _parentFormGroup: FormGroupDirective,
+    @Optional() public _parentFormGroup: FormGroupDirective
   ) {
-    super(_defaultErrorStateMatcher, _parentForm, _parentFormGroup, ngControl)
+    super(_defaultErrorStateMatcher, _parentForm, _parentFormGroup, ngControl);
 
     if (this.ngControl != null) {
       this.ngControl.valueAccessor = this;
@@ -204,5 +217,4 @@ export class FileInputComponent extends FileInputMixinBase implements MatFormFie
       this.updateErrorState();
     }
   }
-
 }

@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
 import { FormsModule, NG_VALUE_ACCESSOR, NgControl, ReactiveFormsModule, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material';
+import { ErrorStateMatcher } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -34,9 +34,9 @@ import { FileInputComponent } from './file-input.component';
 // }
 
 /**
-* Shows error state on a control if it is touched and has any error.
-* Used as global ErrorStateMatcher for all tests.
-*/
+ * Shows error state on a control if it is touched and has any error.
+ * Used as global ErrorStateMatcher for all tests.
+ */
 class FileInputSpecErrorStateMatcher implements ErrorStateMatcher {
   public isErrorState(control: FormControl | null, _: FormGroupDirective | NgForm | null): boolean {
     return !!(control && control.errors !== null && control.touched);
@@ -44,9 +44,9 @@ class FileInputSpecErrorStateMatcher implements ErrorStateMatcher {
 }
 
 /**
-* Shows error state on a control with exactly two validation errors.
-* Used to change the ErrorStateMatcher of a single component.
-*/
+ * Shows error state on a control with exactly two validation errors.
+ * Used to change the ErrorStateMatcher of a single component.
+ */
 class OverrideErrorStateMatcher implements ErrorStateMatcher {
   public isErrorState(control: FormControl | null, _: FormGroupDirective | NgForm | null): boolean {
     return !!(control && control.errors && control.errors.length === 2);
@@ -57,23 +57,24 @@ describe('FileInputComponent', () => {
   let component: FileInputComponent;
   let fixture: ComponentFixture<FileInputComponent>;
 
-  beforeEach(
-    async(() => {
-      TestBed.configureTestingModule({
-        declarations: [FileInputComponent],
-        imports: [
-          ReactiveFormsModule,
-          FormsModule,
-          // Material modules
-          MatFormFieldModule,
-          MatInputModule,
-          MatButtonModule,
-          MatIconModule
-        ],
-        providers: [{ provide: NgControl, useValue: NG_VALUE_ACCESSOR }, { provide: ErrorStateMatcher, useClass: FileInputSpecErrorStateMatcher }]
-      }).compileComponents();
-    })
-  );
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [FileInputComponent],
+      imports: [
+        ReactiveFormsModule,
+        FormsModule,
+        // Material modules
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatIconModule
+      ],
+      providers: [
+        { provide: NgControl, useValue: NG_VALUE_ACCESSOR },
+        { provide: ErrorStateMatcher, useClass: FileInputSpecErrorStateMatcher }
+      ]
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(FileInputComponent);
