@@ -1,18 +1,22 @@
 {
-  "name": "ngx-material-file-input",
-  "version": "2.0.0",
+  "name": "ngx-mfi",
+  "version": "3.0.2",
   "license": "MIT",
-  "author": {
-    "name": "Jeremy Legros"
-  },
-  "homepage": "https://merlosy.github.io/ngx-material-file-input/",
-  "keywords": ["angular", "material", "file", "input", "mat-form-field"],
+  "author": "Band Camp",
+  "homepage": "https://nosyjs.github.io/ngx-mfi/",
+  "keywords": [
+    "angular",
+    "material",
+    "file",
+    "input",
+    "mat-form-field"
+  ],
   "bugs": {
-    "url": "https://github.com/merlosy/ngx-material-file-input/issues"
+    "url": "https://github.com/nosejs/ngx-mfi/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/merlosy/ngx-material-file-input"
+    "url": "git+https://github.com/nosejs/ngx-mfi.git"
   },
   "peerDependencies": {
     "@angular/cdk": "^8.1.1",
@@ -25,5 +29,10 @@
       "entryFile": "src/index.ts"
     },
     "dest": "../../dist/material-file-input"
+  },
+  "description": "ng9 material file input",
+  "main": "karma.conf.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
